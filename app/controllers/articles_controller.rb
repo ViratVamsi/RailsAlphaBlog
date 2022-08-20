@@ -16,17 +16,18 @@ class ArticlesController < ApplicationController
 
     def create
         @article = Article.new(get_strong_article_params)
+        @article.user = User.first
         if @article.save
             flash[:notice] = "Record created successfully"
-            redirect_to root_path
+            redirect_to @article
         else
             render 'new'
         end
     end
 
     def update
+        @article.user = User.first
         if @article.update(get_strong_article_params)
-        
             flash[:notice] = "Record udpated successfully"
             redirect_to article_path(@article)
         else
