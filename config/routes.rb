@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  # get 'categories', to: "categories#index", as: "categories_url"
+  resources :categories , except: [:destroy]
 end
